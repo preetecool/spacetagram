@@ -6,12 +6,16 @@ import {
 	TextContainer,
 	Heading,
 	TextStyle,
+	Frame,
+	Loading,
+	DisplayText,
 } from "@shopify/polaris";
-import { FiHeart } from "react-icons/fi";
 import styled from "styled-components";
+import HeartButton from "./HeartButton";
 
 const Feed = () => {
 	const [apiData, setApiData] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		const fetchNasaData = async () => {
@@ -22,13 +26,22 @@ const Feed = () => {
 			const data = await response.json();
 			console.log(data);
 			setApiData(data);
+			setLoading(false);
 		};
 		fetchNasaData();
 	}, []);
 
-	return (
+	return loading ? (
+		<div style={{ height: "100px" }}>
+			<Frame>
+				<Loading />
+			</Frame>
+		</div>
+	) : (
 		<Wrapper>
 			<>
+				<DisplayText size="extraLarge">Spacetagram</DisplayText>
+				<br />
 				{apiData.media_type === "image" ? (
 					<>
 						<Card>
@@ -50,8 +63,7 @@ const Feed = () => {
 									<TextContainer>{apiData.explanation}</TextContainer>
 								</Card.Section>
 								<Card.Section>
-									<FiHeart />
-									<TextStyle variation="subdued">100 Likes</TextStyle>
+									<HeartButton></HeartButton>
 								</Card.Section>
 							</Card.Section>
 						</Card>
@@ -59,10 +71,9 @@ const Feed = () => {
 				) : (
 					<MediaCard
 						portrait={true}
-						title={apiData.title}
+						title={apiData.title + " " + apiData.date}
 						primaryAction={{
 							content: "Learn more",
-							onAction: () => {},
 						}}
 						description={apiData.explanation}
 					>
@@ -84,6 +95,7 @@ const Feed = () => {
 const Wrapper = styled.div`
 	max-width: 75%;
 	min-width: 30%;
+	max-height: 60vh;
 	margin: 5% auto 5% auto;
 `;
 
