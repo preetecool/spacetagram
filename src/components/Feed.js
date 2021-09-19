@@ -1,5 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
-import { MediaCard, VideoThumbnail, Caption, Card } from "@shopify/polaris";
+import {
+	MediaCard,
+	VideoThumbnail,
+	Card,
+	TextContainer,
+	Heading,
+	TextStyle,
+} from "@shopify/polaris";
+import { FiHeart } from "react-icons/fi";
 import styled from "styled-components";
 
 const Feed = () => {
@@ -23,27 +31,30 @@ const Feed = () => {
 			<>
 				{apiData.media_type === "image" ? (
 					<>
-						<MediaCard portrait={true}>
-							<img
-								width="100%"
-								height="100%"
-								src={apiData.url}
-								alt={apiData.title}
-								style={{
-									objectFit: "cover",
-									objectPosition: "center",
-								}}
-							/>
-
-							<Card title={apiData.title}>
+						<Card>
+							<Card.Section flush>
+								<img
+									width="100%"
+									height="100%"
+									src={apiData.url}
+									alt={apiData.title}
+									style={{
+										objectFit: "cover",
+										objectPosition: "center",
+									}}
+								/>
 								<Card.Section>
-									<Caption>{apiData.date}</Caption>
+									<TextStyle variation="subdued">{apiData.date}</TextStyle>
+									<Heading element="h1">{apiData.title}</Heading>
 									<br />
-									<p>{apiData.explanation}</p>
-									<br />
+									<TextContainer>{apiData.explanation}</TextContainer>
 								</Card.Section>
-							</Card>
-						</MediaCard>
+								<Card.Section>
+									<FiHeart />
+									<TextStyle variation="subdued">100 Likes</TextStyle>
+								</Card.Section>
+							</Card.Section>
+						</Card>
 					</>
 				) : (
 					<MediaCard
@@ -71,7 +82,7 @@ const Feed = () => {
 };
 
 const Wrapper = styled.div`
-	max-width: 85%;
+	max-width: 75%;
 	min-width: 30%;
 	margin: 5% auto 5% auto;
 `;
