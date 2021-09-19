@@ -21,7 +21,7 @@ const HeartButton = () => {
 				onClick={() => setIsPostLiked(!isPostLiked)}
 				onClick={handleLike}
 			/>
-			<TextStyle variation="subdued">{numberOfLikes}</TextStyle>
+			<TextStyle variation="subdued">{numberOfLikes} Likes</TextStyle>
 		</Wrapper>
 	);
 };
