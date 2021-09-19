@@ -18,8 +18,7 @@ const HeartButton = () => {
 		<Wrapper>
 			<Heart
 				isClick={isPostLiked}
-				onClick={() => setIsPostLiked(!isPostLiked)}
-				onClick={handleLike}
+				onClick={(() => setIsPostLiked(!isPostLiked), handleLike)}
 			/>
 			<TextStyle variation="subdued">{numberOfLikes} Likes</TextStyle>
 		</Wrapper>
