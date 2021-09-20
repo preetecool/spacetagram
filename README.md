@@ -1,5 +1,5 @@
 #View Project on Netlify
-https://spacetagram-preetecool.netlify.app/space
+https://spacetagram-preetecool.netlify.app/
 
 The Astronomy picture of the day is fetching data from the NASA APOD API
 
