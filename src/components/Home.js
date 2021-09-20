@@ -19,7 +19,7 @@ const Home = () => {
 			<DisplayText size="extraLarge">Welcome to Spacetagram</DisplayText>
 			<br />
 			<DisplayText size="small">
-				View the Astronomy Picture of the Day, brought you by NASA
+				View the Astronomy Picture of the Day, brought to you by NASA.
 			</DisplayText>
 			<Lottie options={defaultOptions} height={400} width={400} />
 			<br />
