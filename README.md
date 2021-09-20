@@ -1,6 +1,11 @@
 #View Project on Netlify
 https://spacetagram-preetecool.netlify.app/space
 
+The Astronomy picture of the day is fetching data from the NASA APOD API
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
