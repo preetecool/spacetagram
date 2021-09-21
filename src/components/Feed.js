@@ -94,7 +94,7 @@ const Feed = () => {
 
 const Wrapper = styled.div`
 	max-width: 75%;
-	min-width: 30%;
+	min-width: 35%;
 	max-height: 60vh;
 	margin: 5% auto 5% auto;
 `;
