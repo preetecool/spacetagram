@@ -24,7 +24,6 @@ const Feed = () => {
 				`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`
 			);
 			const data = await response.json();
-			console.log(data);
 			setApiData(data);
 			setLoading(false);
 		};
