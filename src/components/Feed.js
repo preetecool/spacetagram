@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {
-	MediaCard,
-	VideoThumbnail,
 	Card,
 	TextContainer,
 	Heading,
@@ -68,23 +66,32 @@ const Feed = () => {
 						</Card>
 					</>
 				) : (
-					<MediaCard
-						portrait={true}
-						title={apiData.title + " " + apiData.date}
-						primaryAction={{
-							content: "Learn more",
-						}}
-						description={apiData.explanation}
-					>
-						<VideoThumbnail
-							videoLength={80}
-							thumbnailUrl={apiData.url}
-							frameBorder="0"
-							gesture="media"
-							allow="encrypted-media"
-							allowFullSCreen
-						/>
-					</MediaCard>
+					<>
+						<Card>
+							<Card.Section flush>
+								<iframe
+									title={apiData.title}
+									width="100%"
+									height="600px"
+									src={apiData.url}
+									alt={apiData.title}
+									style={{
+										objectFit: "cover",
+										objectPosition: "center",
+									}}
+								/>
+								<Card.Section>
+									<TextStyle variation="subdued">{apiData.date}</TextStyle>
+									<Heading element="h1">{apiData.title}</Heading>
+									<br />
+									<TextContainer>{apiData.explanation}</TextContainer>
+								</Card.Section>
+								<Card.Section>
+									<HeartButton></HeartButton>
+								</Card.Section>
+							</Card.Section>
+						</Card>
+					</>
 				)}
 			</>
 		</Wrapper>
