@@ -16,6 +16,7 @@ const Feed = () => {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
+		//Creating a function to fetch data because useEffect hooks cannot be asynchronous.
 		const fetchNasaData = async () => {
 			const apiKey = process.env.REACT_APP_API_KEY;
 			const response = await fetch(
@@ -39,6 +40,7 @@ const Feed = () => {
 			<>
 				<DisplayText size="extraLarge">Spacetagram</DisplayText>
 				<br />
+				{/* api.data is the state variable that holds the information to be displayed*/}
 				{apiData.media_type === "image" ? (
 					<>
 						<Card>
